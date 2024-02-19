@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerdas Cermat - Admin</title>
+</head>
+<body>
+    <h1>Daftar Penjawab</h1>
+    <ul id="answerList"></ul>
+    <button id="clearButton">Hapus Daftar</button>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const answerList = document.getElementById('answerList');
+        const clearButton = document.getElementById('clearButton');
+
+        socket.on('clickEvent', (userClicked) => {
+            const li = document.createElement('li');
+            li.textContent = userClicked;
+            answerList.appendChild(li);
+        });
+
+        clearButton.addEventListener('click', () => {
+            answerList.innerHTML = '';
+        });
+    </script>
+</body>
+</html>

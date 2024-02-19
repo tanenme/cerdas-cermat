@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Page</title>
+  <style>
+    /* CSS untuk membuat tombol jawab besar */
+    #answerButton {
+  width: 100%;
+  height: 100vh; /* Menggunakan tinggi viewport agar tombol memenuhi tinggi layar */
+  font-size: 3em; /* Ukuran teks besar */
+      padding: 20px 40px; /* Padding (atas-bawah, kiri-kanan) */
+      background-color: #007bff; /* Warna latar belakang */
+      color: #ffffff; /* Warna teks */
+      border: none; /* Hapus border */
+      border-radius: 10px; /* Border radius */
+      cursor: pointer; /* Pointer cursor */
+      transition: background-color 0.3s ease; /* Transisi saat hover */
+    }
+
+    /* Efek hover */
+    #answerButton:hover {
+      background-color: #007bff; /* Warna latar belakang saat hover */
+    }
+  </style>
+</head>
+<body>
+  <!-- Tombol Jawab -->
+  <button id="answerButton">Jawab</button>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    document.getElementById('answerButton').addEventListener('click', () => {
+      socket.emit('click');
+    });
+  </script>
+</body>
+</html>
