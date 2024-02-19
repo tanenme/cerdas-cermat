@@ -7,9 +7,9 @@
   <style>
     /* CSS untuk membuat tombol jawab besar */
     #answerButton {
-  width: 100%;
-  height: 100vh; /* Menggunakan tinggi viewport agar tombol memenuhi tinggi layar */
-  font-size: 3em; /* Ukuran teks besar */
+      width: 100%;
+      height: 100vh; /* Menggunakan tinggi viewport agar tombol memenuhi tinggi layar */
+      font-size: 3em; /* Ukuran teks besar */
       padding: 20px 40px; /* Padding (atas-bawah, kiri-kanan) */
       background-color: #007bff; /* Warna latar belakang */
       color: #ffffff; /* Warna teks */
@@ -21,7 +21,7 @@
 
     /* Efek hover */
     #answerButton:hover {
-      background-color: #007bff; /* Warna latar belakang saat hover */
+      background-color: #0056b3; /* Warna latar belakang saat hover */
     }
   </style>
 </head>
@@ -35,6 +35,14 @@
 
     document.getElementById('answerButton').addEventListener('click', () => {
       socket.emit('click');
+
+      // Cek apakah perangkat mendukung Vibration API
+      if ("vibrate" in navigator) {
+        // Getar perangkat untuk 200 milidetik
+        navigator.vibrate(200);
+      } else {
+        console.log("Perangkat tidak mendukung Vibration API");
+      }
     });
   </script>
 </body>

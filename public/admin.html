@@ -4,6 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cerdas Cermat - Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #answerList {
+            list-style: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 400px;
+            font-size: 18px; /* Ubah ukuran teks menjadi lebih besar */
+        }
+
+        li {
+            padding: 15px;
+            margin: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            text-align: center
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Daftar Penjawab</h1>
@@ -22,8 +66,13 @@
             answerList.appendChild(li);
         });
 
+        i=0
+
         clearButton.addEventListener('click', () => {
+            console.log(`Round ${i} clear`)
+            console.log(" ")
             answerList.innerHTML = '';
+            i+=1
         });
     </script>
 </body>

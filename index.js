@@ -18,7 +18,7 @@ io.on('connection', (socket) => {
     let b = peserta[i]
     users.push({ id: socket.id, b });
 
-    console.log(users)
+    //console.log(users)
     console.log(`${users[i].b} connected`);
     i+=1
 
