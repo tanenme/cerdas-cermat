@@ -54,25 +54,43 @@
     <ul id="answerList"></ul>
     <button id="clearButton">Hapus Daftar</button>
     
+    <audio id="alarmSound">
+        <source src="ring.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
         const socket = io();
         const answerList = document.getElementById('answerList');
         const clearButton = document.getElementById('clearButton');
+        const answeredUsers = {};
+        let firstAnswer = true;
 
         socket.on('clickEvent', (userClicked) => {
-            const li = document.createElement('li');
-            li.textContent = userClicked;
-            answerList.appendChild(li);
+
+            if (!answeredUsers[userClicked]) {
+                const li = document.createElement('li');
+                li.textContent = userClicked;
+                answerList.appendChild(li);
+                
+                answeredUsers[userClicked] = true;
+
+                console.log(answeredUsers)
+            }
+            if (firstAnswer) {
+                alarmSound.play();
+                firstAnswer = false;
+            }
         });
 
-        i=0
-
         clearButton.addEventListener('click', () => {
-            console.log(`Round ${i} clear`)
-            console.log(" ")
+
             answerList.innerHTML = '';
-            i+=1
+            firstAnswer = true;
+            Object.keys(answeredUsers).forEach(user => {
+                delete answeredUsers[user];
+            });
         });
     </script>
 </body>

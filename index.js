@@ -9,9 +9,8 @@ const io = socketIo(server);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Simpan informasi tentang setiap koneksi
 const users = [];
-let peserta = ["peserta1", "peserta2", "peserta3", "peserta4", "peserta5"]
+let peserta = ["TIM 1", "TIM 2", "TIM 3", "TIM 4", "TIM 5"]
 let i = 0
 io.on('connection', (socket) => {
 
@@ -21,15 +20,6 @@ io.on('connection', (socket) => {
     //console.log(users)
     console.log(`${users[i].b} connected`);
     i+=1
-
-    // // Tambahkan informasi tentang koneksi ke dalam objek 'users'
-    // users[b] = {
-    //     socket: socket,
-    //     username: b // Anda bisa menambahkan properti lain jika diperlukan
-    // };
- 
-
-    //console.log(users)
 
     // Handle ketika user mengirimkan event 'click'
     socket.on('click', () => {
@@ -55,5 +45,3 @@ const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
-module.exports = users

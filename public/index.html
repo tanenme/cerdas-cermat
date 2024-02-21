@@ -5,28 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Page</title>
   <style>
-    /* CSS untuk membuat tombol jawab besar */
+
     #answerButton {
       width: 100%;
-      height: 100vh; /* Menggunakan tinggi viewport agar tombol memenuhi tinggi layar */
-      font-size: 3em; /* Ukuran teks besar */
-      padding: 20px 40px; /* Padding (atas-bawah, kiri-kanan) */
-      background-color: #007bff; /* Warna latar belakang */
-      color: #ffffff; /* Warna teks */
-      border: none; /* Hapus border */
-      border-radius: 10px; /* Border radius */
-      cursor: pointer; /* Pointer cursor */
-      transition: background-color 0.3s ease; /* Transisi saat hover */
+      height: 100vh; 
+      font-size: 3em;
+      padding: 20px 40px;
+      background-color: #007bff; 
+      color: #ffffff; 
+      border: none;
+      border-radius: 10px;
+      cursor: pointer; 
+      transition: background-color 0.3s ease; 
     }
 
-    /* Efek hover */
     #answerButton:hover {
-      background-color: #0056b3; /* Warna latar belakang saat hover */
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <!-- Tombol Jawab -->
   <button id="answerButton">Jawab</button>
 
   <script src="/socket.io/socket.io.js"></script>
@@ -36,9 +34,7 @@
     document.getElementById('answerButton').addEventListener('click', () => {
       socket.emit('click');
 
-      // Cek apakah perangkat mendukung Vibration API
       if ("vibrate" in navigator) {
-        // Getar perangkat untuk 200 milidetik
         navigator.vibrate(200);
       } else {
         console.log("Perangkat tidak mendukung Vibration API");
